@@ -92,6 +92,10 @@ exports.authenticationSchema = new Schema(
       ],
       select: false,
     },
+    userAgent: {
+      type: [],
+      select: true,
+    },
   },
   { timestamps: true, select: false }
 );

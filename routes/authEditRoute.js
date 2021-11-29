@@ -44,6 +44,7 @@ router
   .patch([
     refreshCookieAuthentication,
     accessCookieAuthentication,
+    //! Must implement a edit cookie authentication
     editEmailValidator,
     maliciousUserVerification,
     userVerificationById,
@@ -55,6 +56,7 @@ router
   .patch([
     refreshCookieAuthentication,
     accessCookieAuthentication,
+    //! Must implement a edit cookie authentication
     editUsernameValidator,
     maliciousUserVerification,
     userVerificationById,
@@ -66,6 +68,7 @@ router
   .patch([
     refreshCookieAuthentication,
     accessCookieAuthentication,
+    //! Must implement a edit cookie authentication
     editPasswordValidator,
     userVerificationById,
     editPasswordController,

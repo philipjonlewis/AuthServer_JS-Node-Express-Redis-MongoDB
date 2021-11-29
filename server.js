@@ -1,8 +1,6 @@
 const express = require("express");
 const app = express();
 
-const RandExp = require("randexp");
-
 // useragent provides device & platform information
 const useragent = require("express-useragent");
 // geoip provides ip address information but ip addess is needed
@@ -51,17 +49,18 @@ const {
   seedUserDatabase,
   deleteUserDatabase,
 } = require("./model/authDbSeeder");
+const { userAgentCleaner } = require("./utilities/userAgentCleaner");
 
 app.set("view engine", "ejs");
 
 // no need to set the code below if the views folder is already named views
-// app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(__dirname + "/public"));
 
 app.set("trust proxy", true);
 
-// app.use(useragent.express());
+app.use(useragent.express());
 
 // url encoded is needed with form data
 app.use(express.urlencoded({ extended: true }));
@@ -98,7 +97,7 @@ app.use("/authentication/user/verify", authVerifyRoute);
 app.use("/authentication/form", authFormRoutes);
 
 app.get("/", (req, res) => {
-  res.send("hello");
+  res.send(userAgentCleaner(req.useragent));
 });
 
 app.get("*", (req, res) => {

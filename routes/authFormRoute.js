@@ -23,6 +23,7 @@ router.route("/login").get(
 );
 
 router.route("/reset/password").get(
+  //! Must send a reset credentiak cookie
   asyncHandler((req, res) => {
     res.render("pages/authentication/resetPassword", {
       csrfToken: req.csrfToken(),
@@ -31,6 +32,7 @@ router.route("/reset/password").get(
 );
 
 router.route("/edit/username").get(
+  //! Must send a edit credential cookie
   asyncHandler((req, res) => {
     res.render("pages/authentication/editUsername", {
       csrfToken: req.csrfToken(),
@@ -39,6 +41,7 @@ router.route("/edit/username").get(
 );
 
 router.route("/edit/password").get(
+  //! Must send a edit credential cookie
   asyncHandler((req, res) => {
     res.render("pages/authentication/editPassword", {
       csrfToken: req.csrfToken(),
@@ -47,6 +50,7 @@ router.route("/edit/password").get(
 );
 
 router.route("/edit/email").get(
+  //! Must send a edit credential cookie
   asyncHandler((req, res) => {
     res.render("pages/authentication/editEmail", {
       csrfToken: req.csrfToken(),

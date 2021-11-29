@@ -6,6 +6,7 @@ const ErrorHandler = require("../handlers/errorHandler");
 exports.accessCookieAuthentication = asyncHandler(async (req, res, next) => {
   try {
     const accessCookie = await req.signedCookies["__Secure-datetask-access"];
+
     jwt.verify(accessCookie, res.locals.accessDecoder, (err, decoded) => {
       if (decoded) {
         res.locals.renewAccessCookie = false;
@@ -20,6 +21,7 @@ exports.accessCookieAuthentication = asyncHandler(async (req, res, next) => {
         throw new ErrorHandler(401, "access token expired");
       }
     });
+    
   } catch (error) {
     throw new ErrorHandler(error.status, error.message);
   }

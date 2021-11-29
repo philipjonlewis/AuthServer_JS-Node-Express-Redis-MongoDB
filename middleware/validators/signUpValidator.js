@@ -19,12 +19,14 @@ const signUpValidatorSchema = Joi.object({
 
 exports.signUpValidator = asyncHandler(async (req, res, next) => {
   try {
+
     if (
       Object.keys(await req.body).toString() !==
       "_csrf,email,password,passwordConfirmation"
     ) {
       throw new ErrorHandler(422, "Unable to process improper data");
     }
+
     const { email, password, passwordConfirmation } = await req.body;
 
     await signUpValidatorSchema

@@ -24,15 +24,10 @@ const {
 
 router.use(authRateLimiterMiddleware);
 
-const sampleMiddleware = (req, res, next) => {
-  console.time("signup")
-  next();
-};
 
 router
   .route("/signup")
   .post([
-    sampleMiddleware,
     signUpValidator,
     maliciousUserVerification,
     userVerificationByCredentials,

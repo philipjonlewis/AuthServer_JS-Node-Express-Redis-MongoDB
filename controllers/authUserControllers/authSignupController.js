@@ -13,11 +13,19 @@ const {
   onboardingNodemailer,
 } = require("../../utilities/onboardingNodemailer");
 
+const { userAgentCleaner } = require("../../utilities/userAgentCleaner");
+
 exports.signUpController = asyncHandler(async (req, res, next) => {
   try {
     if (res.locals.isUserExisting) {
       throw new ErrorHandler(409, "Unable to process credentials");
     }
+
+    res.locals.userCredentials.userAgent = [userAgentCleaner(req.useragent)];
+
+    res.locals.userCredentials.userAgent[0].duringSignup = true;
+
+    console.log(res.locals.userCredentials);
 
     const user = await AuthenticationModel.create({
       ...(await res.locals.userCredentials),
@@ -25,7 +33,6 @@ exports.signUpController = asyncHandler(async (req, res, next) => {
     });
 
     // await onboardingNodemailer(await user);
-    console.timeEnd("signup");
     return await res
       .status(201)
       .cookie(

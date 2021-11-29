@@ -14,12 +14,15 @@ const publicKey = fs.readFileSync(
 exports.refreshCookieAuthentication = asyncHandler(async (req, res, next) => {
   try {
     const refreshCookie = await req.signedCookies["__Secure-datetask-refresh"];
+
     const refreshToken = jwt.verify(refreshCookie, publicKey);
+    
     if (refreshToken) {
       res.locals.accessDecoder = await refreshToken.refreshToken;
       return next();
     }
-    throw new ErrorHandler(401, "refresh token expired");
+
+    throw new ErrorHandler(401, "refresh token expired, Please log in again");
   } catch (error) {
     console.error(error);
     throw new ErrorHandler(error.status, error.message);

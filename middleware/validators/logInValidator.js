@@ -10,37 +10,24 @@ const {
 const { asyncHandler } = require("../handlers/asyncHandler");
 const ErrorHandler = require("../handlers/errorHandler");
 
-const validatorSchema = (condition) => {
-  return condition
-    ? Joi.object({
-        email: emailValidSchema,
-        password: passwordValidSchema,
-      })
-    : Joi.object({
-        username: userNameValidSchema,
-        password: passwordValidSchema,
-      });
-};
+const logInValidatorSchema = Joi.object({
+  email: emailValidSchema,
+  password: passwordValidSchema,
+});
 
 exports.logInValidator = asyncHandler(async (req, res, next) => {
   try {
-    const isEmail = await req.body.usernameOrEmail.includes("@");
+    if (Object.keys(await req.body).toString() !== "_csrf,email,password") {
+      throw new ErrorHandler(422, "Unable to process improper data");
+    }
 
-    await validatorSchema(isEmail)
+    const { email, password } = await req.body;
+
+    await logInValidatorSchema
       .validateAsync(
         {
-          ...(isEmail
-            ? {
-                email: sanitizeHtml(
-                  req.sanitize(await req.body.usernameOrEmail)
-                ),
-              }
-            : {
-                username: sanitizeHtml(
-                  req.sanitize(await req.body.usernameOrEmail)
-                ),
-              }),
-          password: await req.body.password,
+          email: sanitizeHtml(req.sanitize(await email)),
+          password,
         },
         {
           escapeHtml: true,
@@ -48,7 +35,7 @@ exports.logInValidator = asyncHandler(async (req, res, next) => {
         }
       )
       .then((formResData) => {
-        res.locals.userCredentials = { ...formResData, isEmail };
+        res.locals.userCredentials = { ...formResData, isEmail: true };
         return next();
       })
       .catch(async (error) => {
@@ -62,6 +49,8 @@ exports.logInValidator = asyncHandler(async (req, res, next) => {
         );
       });
   } catch (error) {
+    console.log(error);
+
     throw new ErrorHandler(error.status, error.message, error?.payload);
   }
 

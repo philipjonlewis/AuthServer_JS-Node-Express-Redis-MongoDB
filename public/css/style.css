@@ -1,3 +1,4 @@
+@import "https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap";
 /* Box sizing rules */
 *,
 *::before,
@@ -6,7 +7,6 @@
   margin: 0;
   padding: 0;
 }
-
 /* Remove default margin */
 body,
 h1,
@@ -20,26 +20,21 @@ dl,
 dd {
   margin: 0;
 }
-
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role=list],
 ol[role=list] {
   list-style: none;
 }
-
 li {
   list-style: none;
 }
-
 a {
   color: inherit;
 }
-
 /* Set core root defaults */
 html:focus-within {
   scroll-behavior: smooth;
 }
-
 /* Set core body defaults */
 body {
   min-height: 100vh;
@@ -51,23 +46,19 @@ body {
   align-items: center;
   font-family: Arial, Helvetica, sans-serif;
 }
-
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
 }
-
 a {
   text-decoration: none;
 }
-
 /* Make images easier to work with */
 img,
 picture {
   max-width: 100%;
   display: block;
 }
-
 /* Inherit fonts for inputs and buttons */
 input,
 button,
@@ -75,14 +66,12 @@ textarea,
 select {
   font: inherit;
 }
-
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
   outline: none;
 }
-
 input[type=text],
 input[type=email],
 input[type=password] {
@@ -101,19 +90,17 @@ input[type=password]::placeholder {
 input[type=text]:focus,
 input[type=email]:focus,
 input[type=password]:focus {
-  background-color: #f3f3f3;
+  background-color: #ffffff;
 }
 input[type=text]:hover,
 input[type=email]:hover,
 input[type=password]:hover {
-  background-color: #f3f3f3;
+  background-color: #ffffff;
 }
-
 button[type=submit] {
   border: none;
   cursor: pointer;
 }
-
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
@@ -129,196 +116,134 @@ button[type=submit] {
     scroll-behavior: auto !important;
   }
 }
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-height: 100vh;
-  background-color: #f3f3f3;
-}
-
-.authentication-form-container {
-  padding: 1rem;
-  width: 366px;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 3px;
-}
-.authentication-form-container .form-header {
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  color: white;
-  background-color: #0069b5;
-}
-.authentication-form-container .form-header .logo-container {
-  height: 2rem;
-}
-.authentication-form-container .form-header .title-container {
-  height: 4rem;
-  text-align: right;
-  font-size: 24px;
-  line-height: 4rem;
-  border-bottom: 1px white solid;
-}
-.authentication-form-container .form-header .subtitle-container {
-  height: 2rem;
-  font-size: 0.8rem;
-  line-height: 3rem;
-}
-.authentication-form-container .form-container .form-element-container .label-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: left;
-  color: #181818;
-  padding-left: 8px;
-  font-size: 14px;
-  font-weight: 700;
-  height: 2rem;
-  align-items: vc;
-}
-.authentication-form-container .form-container .form-element-container .input-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: left;
-  position: relative;
-  font-size: 14px;
-  height: 2rem;
-}
-.authentication-form-container .form-container .form-element-container .input-container .left-icon {
-  position: absolute;
-  left: 8px;
-}
-.authentication-form-container .form-container .form-element-container .input-container .right-icon {
-  position: absolute;
-  right: 8px;
-  cursor: pointer;
-}
-.authentication-form-container .form-container .form-element-container .input-container svg {
-  stroke: #787878;
-}
-.authentication-form-container .form-container .form-element-container .input-container input {
-  padding-left: 8px;
+input {
   background-color: transparent;
-  padding-left: 2rem;
 }
-.authentication-form-container .form-container .form-element-container .input-container input:focus:valid {
-  background-color: #effff3;
-  border-bottom: 2px solid #00b649;
+.form-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Noto Sans";
+  color: #585858;
+  background-color: #f6fafd;
 }
-.authentication-form-container .form-container .form-element-container .input-container input:valid {
-  background-color: #effff3;
-  border-bottom: 2px solid #00b649;
+.form-page .form-container {
+  box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+  box-shadow: #7070704d 0 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 32rem;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
 }
-.authentication-form-container .form-container .form-element-container .input-container input:focus:invalid {
-  background-color: #fff3f3;
-  border: 2px solid #de5246;
+.form-page .form-container .form-label-container {
+  width: 100%;
+  padding-bottom: 4rem;
+  margin-bottom: 1rem;
 }
-.authentication-form-container .form-container .form-element-container .input-container input:invalid {
-  background-color: #fff3f3;
-  border-bottom: 1px solid #de5246;
+.form-page .form-container .form-label-container p {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #007aff;
 }
-.authentication-form-container .form-container .form-element-container .subtitle-container {
+.form-page .form-container .form-element {
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+}
+.form-page .form-container .form-element label {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: left;
-  padding-left: 8px;
-  height: 2rem;
-}
-.authentication-form-container .form-container .form-element-container .subtitle-container p {
-  font-size: 11px;
-  font-weight: 400;
-  color: #b4b4b4;
-}
-.authentication-form-container .form-container .submit-button {
+  align-items: flex-start;
+  justify-content: flex-start;
   width: 100%;
-  height: 2rem;
-  margin-top: 1rem;
-  font-size: 0.8rem;
-  background-color: #0069b5;
-  color: white;
-}
-.authentication-form-container .external-authentication {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 1rem;
-}
-.authentication-form-container .external-authentication .auth-label {
-  width: 100%;
-  height: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
+  height: 30%;
+  color: #007aff;
   font-weight: bold;
 }
-.authentication-form-container .external-authentication .auth-links {
+.form-page .form-container .form-element input {
   width: 100%;
-  height: 4rem;
+  height: 40%;
+  border-bottom: 1px solid #a0a0a0;
+  border-radius: 5px 5px 0 0;
+  padding-left: 1rem;
+}
+.form-page .form-container .form-element input:hover,
+.form-page .form-container .form-element input :active,
+.form-page .form-container .form-element input :focus {
+  background-color: #f7f7f7;
+}
+.form-page .form-container .form-element .input-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 30%;
+  font-size: 0.8rem;
+  color: #a0a0a0;
+}
+.form-page .form-container .form-button-container {
+  width: 100%;
+  height: 3rem;
+  margin-top: 4rem;
+}
+.form-page .form-container .form-button-container button {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  transition: all 0.5s ease;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 5px 5px;
+  background-color: #007aff;
+  color: white;
+}
+.form-page .form-container .form-button-container button:hover {
+  background-color: #3395ff;
+  box-shadow: none;
+}
+nav {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+nav .nav-title {
+  color: #007aff;
+  padding: 1rem;
+  margin-bottom: 4rem;
+}
+nav .formlist-container {
+  width: 60%;
+  height: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
 }
-.authentication-form-container .external-authentication .auth-links .external-link {
-  width: 30%;
-  height: 2rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  color: white;
+@media only screen and (max-width: 1400px) {
+  nav .formlist-container {
+    flex-direction: column;
+    height: 30%;
+  }
+}
+nav .formlist-container a {
+  transition: all 0.5s ease;
   font-weight: bold;
-  font-size: 12px;
-  background-color: rebeccapurple;
-}
-.authentication-form-container .external-authentication .auth-links .google {
-  background-color: #de5246;
-}
-.authentication-form-container .external-authentication .auth-links .facebook {
-  background-color: #3b5998;
-}
-.authentication-form-container .form-footer .footer-text-container {
-  width: 100%;
-  height: 2rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 10px;
-}
-.authentication-form-container .form-footer .forgot-password {
-  text-align: right;
-  color: red;
-  font-weight: bold;
-}
-.authentication-form-container .form-footer .login-instead {
-  text-align: left;
-  color: blue;
-  font-weight: bold;
-}
-.authentication-form-container .form-footer .assoc-links {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  margin-top: 1rem;
-}
-.authentication-form-container .form-footer .assoc-links ul {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  align-items: flex-end;
   color: #787878;
 }
-.authentication-form-container .form-footer .assoc-links ul li {
-  padding-left: 1rem;
+nav .formlist-container a:hover {
+  transform: translateY(-3px);
+  color: #007aff;
 }
-
-/*# sourceMappingURL=/signup.0753c0fa.css.map */

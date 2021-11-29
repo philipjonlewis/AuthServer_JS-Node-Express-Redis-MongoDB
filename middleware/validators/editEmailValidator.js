@@ -19,7 +19,7 @@ exports.editEmailValidator = asyncHandler(async (req, res, next) => {
   try {
     if (
       Object.keys(await req.body).toString() !==
-      "_csrf,newEmail,password,passwordConfirmation"
+      "newEmail,password,passwordConfirmation"
     ) {
       throw new ErrorHandler(422, "Unable to process improper data");
     }

@@ -7,6 +7,7 @@ exports.maliciousUserVerification = asyncHandler(async (req, res, next) => {
   try {
     const { username, email, isEmail, newUsername } =
       res.locals.userCredentials;
+
     if (
       await MaliciousUserModel.exists({
         ...(isEmail ? { email } : { username } || { username: newUsername }),

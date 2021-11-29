@@ -1,6 +1,61 @@
 <%- include('../../partials/header'); %>
 
-<h1>Edit Username</h1>
-<h2>Form</h2>
+<div class="form-page">
+  <form
+    class="form-container editusername-form"
+    action="http://localhost:5000/authentication/user/edit/username"
+    method="POST"
+  >
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+
+    <div class="form-label-container">
+      <p>Edit Username</p>
+    </div>
+
+    <div class="form-element">
+      <label for="newEmail">New Email</label>
+      <input
+        type="email"
+        name="newEmail"
+        id="newEmail"
+        placeholder="johndoe@email.com"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      />
+      <p class="input-info">Must be a different email from your current one</p>
+    </div>
+
+    <div class="form-element">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password Field"
+        pattern="(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,32}$"
+      />
+      <p class="input-info">
+        Must be 8-16 characters container numbers and special characters.
+      </p>
+    </div>
+
+    <div class="form-element">
+      <label for="passwordConfirmation">Confirm Password</label>
+      <input
+        type="password"
+        name="passwordConfirmation"
+        id="passwordConfirmation"
+        placeholder="Password Confirmation Field"
+        pattern="(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,32}$"
+      />
+      <p class="input-info">
+        Must be the same value as the password field above
+      </p>
+    </div>
+
+    <div class="form-button-container">
+      <button type="submit">Change Username</button>
+    </div>
+  </form>
+</div>
 
 <%- include('../../partials/footer'); %>

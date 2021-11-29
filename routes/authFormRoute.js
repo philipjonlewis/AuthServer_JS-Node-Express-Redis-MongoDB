@@ -1,8 +1,12 @@
 const express = require("express");
+const {
+  accessCookieAuthentication,
+} = require("../middleware/authentication/accessCookieAuthentication");
+const {
+  refreshCookieAuthentication,
+} = require("../middleware/authentication/refreshCookieAuthentication");
 const { asyncHandler } = require("../middleware/handlers/asyncHandler");
 const router = express.Router();
-
-
 
 //CSRF Beauty
 //Must also have its own rate limiter
@@ -22,10 +26,13 @@ router.route("/login").get(
   })
 );
 
-router.route("/reset/password").get(
-  //! Must send a reset credentiak cookie
+//TODO routes below must also be protected by refresh, acess, etc
+
+router.route("/forgotpassword").get(
+  // refreshCookieAuthentication,
+  // accessCookieAuthentication,
   asyncHandler((req, res) => {
-    res.render("pages/authentication/resetPassword", {
+    res.render("pages/authentication/forgotPassword", {
       csrfToken: req.csrfToken(),
     });
   })

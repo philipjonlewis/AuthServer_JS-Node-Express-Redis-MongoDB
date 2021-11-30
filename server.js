@@ -111,6 +111,22 @@ app.get("/", (req, res) => {
   res.send("napakagaling");
 });
 
+const {
+  refreshCookieAuthentication,
+} = require("./middleware/authentication/refreshCookieAuthentication");
+
+const {
+  accessCookieAuthentication,
+} = require("./middleware/authentication/accessCookieAuthentication");
+
+app.route("/trial").get([
+  refreshCookieAuthentication,
+  accessCookieAuthentication,
+  (req, res) => {
+    res.send("kinersor");
+  },
+]);
+
 app.get("*", (req, res) => {
   res.send("Page does not exist");
 });

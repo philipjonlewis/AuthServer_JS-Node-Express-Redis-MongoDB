@@ -29,8 +29,6 @@ router.route("/login").get(
 //TODO routes below must also be protected by refresh, acess, etc
 
 router.route("/forgotpassword").get(
-  // refreshCookieAuthentication,
-  // accessCookieAuthentication,
   asyncHandler((req, res) => {
     res.render("pages/authentication/forgotPassword", {
       csrfToken: req.csrfToken(),
@@ -39,6 +37,8 @@ router.route("/forgotpassword").get(
 );
 
 router.route("/edit/username").get(
+  refreshCookieAuthentication,
+  accessCookieAuthentication,
   //! Must send a edit credential cookie
   asyncHandler((req, res) => {
     res.render("pages/authentication/editUsername", {
@@ -48,6 +48,8 @@ router.route("/edit/username").get(
 );
 
 router.route("/edit/password").get(
+  refreshCookieAuthentication,
+  accessCookieAuthentication,
   //! Must send a edit credential cookie
   asyncHandler((req, res) => {
     res.render("pages/authentication/editPassword", {
@@ -57,6 +59,8 @@ router.route("/edit/password").get(
 );
 
 router.route("/edit/email").get(
+  refreshCookieAuthentication,
+  accessCookieAuthentication,
   //! Must send a edit credential cookie
   asyncHandler((req, res) => {
     res.render("pages/authentication/editEmail", {

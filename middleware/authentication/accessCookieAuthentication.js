@@ -14,9 +14,9 @@ exports.accessCookieAuthentication = asyncHandler(async (req, res, next) => {
       }
       if (err.name == "TokenExpiredError") {
         res.locals.renewAccessCookie = true;
+
         return next();
       }
-      console.log(err);
       if (err) {
         throw new ErrorHandler(
           401,

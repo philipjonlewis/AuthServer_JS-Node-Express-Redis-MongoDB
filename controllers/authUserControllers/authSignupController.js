@@ -42,7 +42,7 @@ exports.signUpController = asyncHandler(async (req, res, next) => {
       )
       .cookie(
         "authentication-access",
-        await accessTokenHandler(await user._id),
+         accessTokenHandler( user._id),
         accessCookieOptions
       )
       // .redirect("/authentication/form/login")

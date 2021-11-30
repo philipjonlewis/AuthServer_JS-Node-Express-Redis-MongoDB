@@ -4,7 +4,7 @@
   <form
     class="form-container editemail-form"
     action="http://localhost:5000/authentication/user/edit/email"
-    method="PATCH"
+    method="POST"
   >
     <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
 
@@ -13,12 +13,12 @@
     </div>
 
     <div class="form-element">
-      <label for="newUsername">New Username</label>
+      <label for="newEmail">New Email</label>
       <input
         type="email"
-        name="newUsername"
-        id="newUsername"
-        placeholder="johndoe"
+        name="newEmail"
+        id="newEmail"
+        placeholder="johndoe@email.com"
       />
       <p class="input-info">Anything is possible</p>
     </div>

@@ -16,13 +16,16 @@ const editUsernameValidatorSchema = Joi.object({
 });
 
 exports.editEmailValidator = asyncHandler(async (req, res, next) => {
+  console.log(req.body);
   try {
     if (
       Object.keys(await req.body).toString() !==
-      "newEmail,password,passwordConfirmation"
+      "_csrf,newEmail,password,passwordConfirmation"
     ) {
       throw new ErrorHandler(422, "Unable to process improper data");
     }
+
+    console.log(req.body);
 
     const { newEmail, password, passwordConfirmation } = await req.body;
 

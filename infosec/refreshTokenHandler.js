@@ -10,7 +10,7 @@ const privateKey = fs.readFileSync(
 const AuthenticationModel = require("../model/dbModels/authenticationModel");
 
 exports.refreshTokenHandler = async (user) => {
-  const refreshToken = jwt.sign(
+  const refreshToken = await jwt.sign(
     {
       refreshToken: await user._id,
     },

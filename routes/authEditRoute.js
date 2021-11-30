@@ -39,39 +39,33 @@ const {
 
 router.use(authEditRateLimiter);
 
-router
-  .route("/email")
-  .patch([
-    refreshCookieAuthentication,
-    accessCookieAuthentication,
-    //! Must implement a edit cookie authentication
-    editEmailValidator,
-    maliciousUserVerification,
-    userVerificationById,
-    editEmailController,
-  ]);
+router.route("/email").post([
+  refreshCookieAuthentication,
+  accessCookieAuthentication,
+  //! Must implement a edit cookie authentication
+  editEmailValidator,
+  maliciousUserVerification,
+  userVerificationById,
+  editEmailController,
+]);
 
-router
-  .route("/username")
-  .patch([
-    refreshCookieAuthentication,
-    accessCookieAuthentication,
-    //! Must implement a edit cookie authentication
-    editUsernameValidator,
-    maliciousUserVerification,
-    userVerificationById,
-    editUsernameController,
-  ]);
+router.route("/username").post([
+  refreshCookieAuthentication,
+  accessCookieAuthentication,
+  //! Must implement a edit cookie authentication
+  editUsernameValidator,
+  maliciousUserVerification,
+  userVerificationById,
+  editUsernameController,
+]);
 
-router
-  .route("/password")
-  .patch([
-    refreshCookieAuthentication,
-    accessCookieAuthentication,
-    //! Must implement a edit cookie authentication
-    editPasswordValidator,
-    userVerificationById,
-    editPasswordController,
-  ]);
+router.route("/password").post([
+  refreshCookieAuthentication,
+  accessCookieAuthentication,
+  //! Must implement a edit cookie authentication
+  editPasswordValidator,
+  userVerificationById,
+  editPasswordController,
+]);
 
 module.exports = router;

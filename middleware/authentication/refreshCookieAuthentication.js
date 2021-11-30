@@ -13,16 +13,16 @@ const publicKey = fs.readFileSync(
 
 exports.refreshCookieAuthentication = asyncHandler(async (req, res, next) => {
   try {
-    const refreshCookie = await req.signedCookies["authentication-refresh"];
+    const refreshCookie = req.signedCookies["authentication-refresh"];
 
-    const refreshToken = jwt.verify(refreshCookie, publicKey);
+    jwt.verify(refreshCookie, publicKey, (err, decoded) => {
+      if (decoded) {
+        res.locals.accessDecoder = decoded.refreshToken;
+        return next();
+      }
 
-    if (refreshToken) {
-      res.locals.accessDecoder = await refreshToken.refreshToken;
-      return next();
-    }
-
-    throw new ErrorHandler(401, "refresh token expired, Please log in again");
+      throw new ErrorHandler(401, "refresh token expired, Please log in again");
+    });
   } catch (error) {
     throw new ErrorHandler(error.status, error.message);
   }

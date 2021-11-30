@@ -36,15 +36,16 @@ exports.signUpController = asyncHandler(async (req, res, next) => {
     return await res
       .status(201)
       .cookie(
-        "__Secure-datetask",
+        "authentication-refresh",
         user.refreshTokens[user.refreshTokens.length - 1],
         refreshCookieOptions
       )
       .cookie(
-        "__Secure-datetask-access",
+        "authentication-access",
         await accessTokenHandler(await user._id),
         accessCookieOptions
       )
+      // .redirect("/authentication/form/login")
       .json({
         code: 201,
         status: true,

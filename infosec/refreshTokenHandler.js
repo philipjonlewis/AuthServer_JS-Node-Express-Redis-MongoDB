@@ -26,5 +26,6 @@ exports.refreshTokenHandler = async (user) => {
   await AuthenticationModel.findByIdAndUpdate(await user._id, {
     refreshTokens: [refreshToken],
   });
+
   return refreshToken;
 };

@@ -38,7 +38,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.8",
     "nocache": "^3.0.1",
-    "nodemailer": "^6.6.3",
+    "nodemailer": "^6.7.1",
     "randexp": "^0.5.3",
     "rate-limiter-flexible": "^2.2.4",
     "redis": "^3.1.2",

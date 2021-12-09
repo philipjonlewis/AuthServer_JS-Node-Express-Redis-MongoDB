@@ -1,4 +1,8 @@
 const express = require("express");
+const router = express.Router();
+
+const { authRateLimiterMiddleware } = require("../infosec/rateLimiter");
+
 const {
   accessCookieAuthentication,
 } = require("../middleware/authentication/accessCookieAuthentication");
@@ -6,10 +10,9 @@ const {
   refreshCookieAuthentication,
 } = require("../middleware/authentication/refreshCookieAuthentication");
 const { asyncHandler } = require("../middleware/handlers/asyncHandler");
-const router = express.Router();
 
-//CSRF Beauty
-//Must also have its own rate limiter
+// ! Study if this route should use a stricter rate limiter
+router.use(authRateLimiterMiddleware);
 
 router.route("/signup").get(
   asyncHandler((req, res) => {

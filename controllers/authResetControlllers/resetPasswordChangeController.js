@@ -33,7 +33,10 @@ exports.resetPasswordChangeController = asyncHandler(async (req, res, next) => {
     await AuthenticationModel.findOneAndUpdate(
       { email },
       {
-        password: await bcrypt.hash("HelloPhilip713!", 10),
+        password: await bcrypt.hash(
+          process.env.PASSWORD_HASH,
+          process.env.HASH_VALUE
+        ),
         isEmailVerified: true,
       }
     );

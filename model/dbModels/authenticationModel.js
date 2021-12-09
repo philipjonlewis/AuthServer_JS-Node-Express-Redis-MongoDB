@@ -56,7 +56,7 @@ authenticationSchema.pre("save", async function (next) {
       return next();
     }
 
-    this.password = await bcrypt.hash(await this.password, 10);
+    this.password = await bcrypt.hash(await this.password, process.env.HASH_VALUE);
     next();
   } catch (error) {
     console.log("error from db mw", error);

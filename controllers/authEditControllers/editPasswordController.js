@@ -51,7 +51,7 @@ exports.editPasswordController = asyncHandler(async (req, res, next) => {
     await AuthenticationModel.findOneAndUpdate(
       { _id: accessDecoder },
       {
-        password: await bcrypt.hash(await newPassword, 10),
+        password: await bcrypt.hash(await newPassword, process.env.HASH_VALUE),
         isEmailVerified: false,
       }
     );

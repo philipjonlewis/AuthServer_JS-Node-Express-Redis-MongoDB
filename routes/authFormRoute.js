@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { authRateLimiterMiddleware } = require("../infosec/rateLimiter");
+const { authFormRateLimiter } = require("../infosec/rateLimiter");
 
 const {
   accessCookieAuthentication,
@@ -11,8 +11,8 @@ const {
 } = require("../middleware/authentication/refreshCookieAuthentication");
 const { asyncHandler } = require("../middleware/handlers/asyncHandler");
 
-// ! Study if this route should use a stricter rate limiter
-router.use(authRateLimiterMiddleware);
+
+router.use(authFormRateLimiter);
 
 router.route("/signup").get(
   asyncHandler((req, res) => {

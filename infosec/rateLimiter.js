@@ -73,6 +73,37 @@ exports.authEditRateLimiter = async (req, res, next) => {
 		});
 };
 
+
+exports.authFormRateLimiter = async (req, res, next) => {
+	const authEditRateLimiterOptions = {
+		storeClient: redisClient,
+		// Make points 1 in production
+		points: 5, // Number of points
+		duration: 10, // Per second(s)
+		execEvenly: false, // Do not delay actions evenly
+		blockDuration: 0, // Do not block if consumed more than points
+		keyPrefix: 'authEditRateLimiter', // must be unique for limiters with different purpose
+	};
+
+	const rateLimiterRedis = new RateLimiterRedis(authEditRateLimiterOptions);
+
+	rateLimiterRedis
+		.consume(req.ip)
+		.then(() => {
+			next();
+		})
+		.catch((error) => {
+			const secs = Math.round(30);
+			res.set('Retry-After', String(secs));
+			res.status(429).json({
+				code: 429,
+				status: false,
+				message: 'Too Many Requests',
+				details: `Try again after ${secs} seconds`,
+			});
+		});
+};
+
 // exports.authRateLimiterMiddleware = (req, res, next) => {
 // 	rateLimiterRedis
 // 		.consume(req.ip)

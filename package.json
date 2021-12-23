@@ -34,7 +34,7 @@
     "geoip-lite": "^1.4.2",
     "helmet": "^4.6.0",
     "html-escaper": "^3.0.3",
-    "joi": "^17.4.2",
+    "joi": "^17.5.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.13",
     "nocache": "^3.0.1",

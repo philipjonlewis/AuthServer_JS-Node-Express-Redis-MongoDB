@@ -1,13 +1,18 @@
-const redis = require('redis');
-const redisClient = redis.createClient({ enable_offline_queue: false });
+const {createClient} = require('redis');
+
 
 const { RateLimiterRedis } = require('rate-limiter-flexible');
 
-// It is recommended to process Redis errors and setup some reconnection strategy
-redisClient.on('error', (err) => {});
-redisClient.on('connect', (err) => {
-	console.log('Connected to redis rate-limiter successfully');
-});
+(async () => {
+	const client = createClient();
+  
+	client.on('error', (err) => console.log('Redis Client Error', err));
+  client.on("connect", (err) => console.log("redis connected"))
+	await client.connect();
+  
+	await client.set('key', 'value');
+	const value = await client.get('key');
+  })();
 
 exports.authRateLimiterMiddleware = async (req, res, next) => {
 	const authenticationRateLimiterOptions = {

@@ -12,7 +12,7 @@ const {
 const { asyncHandler } = require("../middleware/handlers/asyncHandler");
 
 
-router.use(authFormRateLimiter);
+// router.use(authFormRateLimiter);
 
 router.route("/signup").get(
   asyncHandler((req, res) => {

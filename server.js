@@ -106,8 +106,8 @@ app.use("/authentication/user/verify", authVerifyRoute);
 app.use("/authentication/form", authFormRoutes);
 
 app.get("/", (req, res) => {
-  const refreshCookie = req.signedCookies["datetask-refresh"];
-  console.log(refreshCookie);
+//   const refreshCookie = req.signedCookies["datetask-refresh"];
+//   console.log(refreshCookie);
   res.send("napakagaling");
 });
 

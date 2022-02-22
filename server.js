@@ -88,7 +88,7 @@ databaseConnection();
 // seedUserDatabase();
 // deleteUserDatabase();
 
-app.use(csrfProtection);
+// app.use(csrfProtection);
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", req.headers.origin);

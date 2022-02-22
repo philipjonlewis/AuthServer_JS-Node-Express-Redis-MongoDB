@@ -22,7 +22,7 @@ const {
   logOutController,
 } = require("../controllers/authUserControllers/authLogOutController");
 
-router.use(authRateLimiterMiddleware);
+// router.use(authRateLimiterMiddleware);
 
 
 router

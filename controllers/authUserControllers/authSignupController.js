@@ -25,7 +25,12 @@ exports.signUpController = asyncHandler(async (req, res, next) => {
 
     res.locals.userCredentials.userAgent[0].duringSignup = true;
 
-    console.log(res.locals.userCredentials);
+    // Take note of this clg as it shows the name of the file.
+    console.log(
+      res.locals.userCredentials,
+      require("path").basename(__filename),
+      "Line 29"
+    );
 
     const user = await AuthenticationModel.create({
       ...(await res.locals.userCredentials),
@@ -42,15 +47,17 @@ exports.signUpController = asyncHandler(async (req, res, next) => {
       )
       .cookie(
         "authentication-access",
-         accessTokenHandler( user._id),
+        accessTokenHandler(user._id),
         accessCookieOptions
       )
-      // .redirect("/authentication/form/login")
-      .json({
-        code: 201,
-        status: true,
-        message: "Successfully created a new user",
-      });
+      .send("tagumpay");
+    // .redirect("/authentication/form/login")
+
+    // .json({
+    //   code: 201,
+    //   status: true,
+    //   message: "Successfully created a new user",
+    // });
   } catch (error) {
     throw new ErrorHandler(error.status, error.message);
   }

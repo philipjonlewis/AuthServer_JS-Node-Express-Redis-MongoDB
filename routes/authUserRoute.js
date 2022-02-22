@@ -24,7 +24,6 @@ const {
 
 // router.use(authRateLimiterMiddleware);
 
-
 router
   .route("/signup")
   .post([

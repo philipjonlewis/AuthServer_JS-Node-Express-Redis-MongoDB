@@ -3,7 +3,7 @@
 <div class="form-page">
   <form
     class="form-container signup-form"
-    action="http://localhost:5000/authentication/user/signup"
+    action="http://localhost:4000/authentication/user/signup"
     method="POST"
   >
     <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
@@ -57,5 +57,7 @@
     </div>
   </form>
 </div>
+
+<script src="/js/signup.js"></script>
 
 <%- include('../../partials/footer'); %>

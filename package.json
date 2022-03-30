@@ -32,7 +32,7 @@
     "express-sanitizer": "^1.0.6",
     "express-session": "^1.17.2",
     "express-useragent": "^1.0.15",
-    "geoip-lite": "^1.4.3",
+    "geoip-lite": "^1.4.4",
     "helmet": "^5.0.2",
     "html-escaper": "^3.0.3",
     "joi": "^17.6.0",

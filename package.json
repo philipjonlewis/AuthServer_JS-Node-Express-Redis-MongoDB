@@ -43,7 +43,7 @@
     "randexp": "^0.5.3",
     "rate-limiter-flexible": "^2.3.6",
     "redis": "^4.0.3",
-    "sanitize-html": "^2.7.0",
+    "sanitize-html": "^2.7.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

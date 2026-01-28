@@ -20,7 +20,7 @@
   "homepage": "https://github.com/philipjonlewis/Authentication-Server#readme",
   "dependencies": {
     "@supercharge/request-ip": "^1.2.0",
-    "bcrypt": "^5.1.0",
+    "bcrypt": "^6.0.0",
     "bcryptjs": "^2.4.3",
     "connect-redis": "^7.1.0",
     "cookie-parser": "^1.4.6",
